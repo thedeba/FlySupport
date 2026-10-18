@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-navy: #0b2545;
+  --brand-sky: #1d7fd6;
+  --brand-orange: #f97316;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  @apply bg-slate-50 text-navy-900 font-sans antialiased;
+}
+
+main {
+  padding-bottom: 5.5rem;
+}
+
+@media (min-width: 768px) {
+  main {
+    padding-bottom: 0;
+  }
+}
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--brand-orange);
+  outline-offset: 2px;
+}
+
+/* Decorative blobs */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(64px);
+  opacity: 0.35;
+  z-index: 0;
+  pointer-events: none;
+}
+.blob-orange {
+  background: var(--brand-orange);
+}
+.blob-sky {
+  background: var(--brand-sky);
+}
+.blob-navy {
+  background: var(--brand-navy);
+}
+
+/* Section headings */
+.section-eyebrow {
+  @apply inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-bold uppercase tracking-widest text-sky-200 backdrop-blur;
+}
+.section-head {
+  @apply mb-3 max-w-xl text-center;
+}
+.section-title {
+  @apply text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl;
+}
+.section-subtitle {
+  @apply mt-4 max-w-2xl mx-auto text-lg leading-relaxed text-navy-200;
+}
+
+/* Card accents */
+.card-group {
+  @apply transition-all duration-300;
+}
+.card-group:hover {
+  transform: translateY(-4px);
+}
+
+/* Decorative section top border */
+.section-border {
+  @apply relative;
+}
+.section-border::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 3px;
+  background: linear-gradient(to right, var(--brand-sky), transparent 60%, var(--brand-orange));
+  opacity: 0.5;
+}
