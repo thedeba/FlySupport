@@ -9,7 +9,7 @@ export const SERVICES: ServiceSummary[] = [
     href: "/flight-booking",
     title: "Flight Booking",
     description:
-      "Discuss flight options for an upcoming trip with our team by phone.",
+      "Discuss flight options for an upcoming trip with a participating provider by phone.",
   },
   {
     href: "/flight-changes",
@@ -33,7 +33,7 @@ export const SERVICES: ServiceSummary[] = [
     href: "/last-minute-flights",
     title: "Last-Minute Flights",
     description:
-      "Need to fly soon? Discuss available last-minute options with our team.",
+      "Need to fly soon? Discuss available last-minute options with a participating provider.",
   },
   {
     href: "/airline-canceled-flight",

@@ -24,7 +24,7 @@ export default function NotFound() {
           >
             Back to Homepage
           </Link>
-          <CallButton label="Call Flight Support" variant="primary" />
+          <CallButton label="Call for Travel Assistance" variant="primary" />
         </div>
       </div>
     </section>

@@ -24,8 +24,8 @@ export default function RelatedServices({
           Related Services
         </h2>
         <p className="mt-2 max-w-2xl text-sm leading-relaxed text-navy-600">
-          Every situation is different. Explore our other flight assistance
-          services, or call us and we&rsquo;ll point you in the right direction.
+          Every situation is different. Explore the topics covered on this
+          website. A call may connect you with a participating independent provider.
         </p>
         <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((service) => (

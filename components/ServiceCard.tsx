@@ -8,6 +8,7 @@ export type ServiceCardProps = {
   title: string;
   description: string;
   ctaLabel: string;
+  detailsHref: string;
 };
 
 export default function ServiceCard({
@@ -15,6 +16,7 @@ export default function ServiceCard({
   title,
   description,
   ctaLabel,
+  detailsHref,
 }: ServiceCardProps) {
   const enabled = PHONE_CONFIGURED;
   return (
@@ -47,6 +49,12 @@ export default function ServiceCard({
             {PRODUCTION_PLACEHOLDER}
           </span>
         )}
+        <Link
+          href={detailsHref}
+          className="mt-4 inline-flex min-h-11 items-center text-sm font-semibold text-navy-800 underline underline-offset-2 hover:text-orange-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600"
+        >
+          Read service information
+        </Link>
       </div>
     </article>
   );

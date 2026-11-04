@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Logo({
   variant = "dark",
@@ -11,20 +12,18 @@ export default function Logo({
     <Link
       href="/"
       className={`flex items-center gap-2.5 ${className}`}
-      aria-label="FlySupport — go to homepage"
+      aria-label="AirNexa — go to homepage"
     >
       <span
         className={`inline-flex items-center justify-center overflow-hidden rounded-xl p-1.5 ${
           variant === "light" ? "bg-white" : "bg-navy-50"
         }`}
       >
-        <img
+        <Image
           src="/images/logo.jpeg"
           alt=""
           width={32}
           height={32}
-          loading="eager"
-          decoding="async"
           className="h-8 w-8 max-w-none object-cover"
         />
       </span>
@@ -33,7 +32,7 @@ export default function Logo({
           variant === "light" ? "text-white" : "text-navy-900"
         }`}
       >
-        FlySupport
+        AirNexa
       </span>
     </Link>
   );

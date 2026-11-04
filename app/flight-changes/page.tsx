@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/page-metadata";
 import PageHero from "@/components/PageHero";
 import ProseSection from "@/components/ProseSection";
 import FAQSection from "@/components/FAQSection";
@@ -6,53 +6,33 @@ import RelatedServices from "@/components/RelatedServices";
 import FinalCallToAction from "@/components/FinalCallToAction";
 import CallButton from "@/components/CallButton";
 import { SERVICES } from "@/lib/services";
-import { SEO_KEYWORDS } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
 import SEOScripts from "@/components/SEOScripts";
-import { jsonLdOrganization, jsonLdBreadcrumb, jsonLdFAQ } from "@/lib/seo";
+import { jsonLdBreadcrumb } from "@/lib/seo";
 import type { Faq } from "@/lib/faq-type";
 
-export const metadata: Metadata = {
-  title: "Emergency Flight Change Assistance Phone | Same-Day Flight Change",
-  description:
-    "Need emergency flight change assistance? Call our flight change assistance phone line to discuss same-day change options, fare rules, and availability for your ticket — speak to a real person, no forms.",
-  alternates: { canonical: "/flight-changes" },
-  openGraph: {
-    title: "Emergency Flight Change Assistance Phone | FlySupport",
-    description:
-      "Plans changed suddenly? Call our team to discuss available change options for your ticket before they close.",
-    url: "/flight-changes",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Emergency Flight Change Assistance Phone | FlySupport",
-    description:
-      "Emergency same-day flight change help by phone — discuss fare rules and availability for your ticket.",
-  },
-  keywords: SEO_KEYWORDS,
-};
+export const metadata = pageMetadata({ title: 'Flight Change Information', description: 'Review general information about flight changes and ticket conditions. Contact the airline or ticket provider responsible for your booking to confirm options and fees.', path: '/flight-changes' });
 
 const FAQS: Faq[] = [
   {
     question: "How late can I change my flight?",
     answer:
-      "It depends on the airline and your fare rules. Many airlines allow changes up to a few hours before departure, but availability shrinks as departure approaches. If you need a change, calling as early as possible improves the options available to you.",
+      "Change deadlines and options depend on the airline, ticket seller, and fare rules. Check your booking terms and contact the responsible company as soon as you know your plans may change.",
   },
   {
     question: "Will I have to pay a change fee?",
     answer:
-      "Change fees and fare differences vary widely. Some airlines have eliminated change fees on standard fares (differences in fare still often apply), while basic economy and some international tickets remain restrictive. We'll explain what applies to your ticket during the call.",
+      "Change fees and fare differences depend on the airline and ticket. Confirm the terms with the airline or ticket provider. A participating provider may discuss assistance options and its own fees.",
   },
   {
     question: "Can I change the name on a ticket or transfer it to someone else?",
     answer:
-      "Most airlines do not allow full name changes or transfers between passengers, though minor name corrections are often possible. Call us and we'll explain what your airline typically permits.",
+      "Name corrections and passenger transfers are subject to the airline's rules and the ticket terms. Ask the airline or ticket seller what changes, if any, are allowed for your booking.",
   },
   {
     question: "What if the new flight costs more?",
     answer:
-      "If the new fare is higher, you'll typically be responsible for the fare difference. We'll walk you through the pricing and any service fees before you confirm anything.",
+      "The airline or ticket provider determines any fare difference. Ask the provider who handles your request to explain its prices and fees before you agree.",
   },
 ];
 
@@ -63,28 +43,25 @@ export default function FlightChangesPage() {
 crumbLabel="Flight Changes"
         eyebrow="Flight Changes"
         title="Emergency Flight Change Assistance"
-        description="Meetings move, family plans shift, weather happens. If you need to change your flight at the last minute, call our team to discuss the options available for your ticket."
+        description="Meetings move, family plans shift, weather happens. If you need to change your flight at the last minute, call to reach a participating provider to discuss the options available for your ticket."
       />
 
-      <ProseSection heading="How We Help With Flight Changes">
+      <ProseSection heading="Flight Change Information">
         <p>
-          Flight changes are time-sensitive. Airlines set cutoffs for changes,
-          and the pool of available seats on alternative flights shrinks as
-          departure gets closer. That makes a fast phone call the smartest
-          first move.
+          Airlines and ticket sellers set the change deadlines that apply to
+          each booking. Review the ticket terms and contact the responsible
+          company promptly to confirm current availability and any charges.
         </p>
         <p>
-          When you call, have your booking reference ready. Our team will
-          review the change rules attached to your fare — including any change
-          fees, fare differences, and cutoff times — and explain what
-          alternative flights may be possible. You&rsquo;ll hear the full
-          picture, including any applicable service fees, before you decide
-          whether to proceed.
+          If you choose to call a provider, have your booking reference ready.
+          The provider may review the change rules attached to your fare —
+          including change fees, fare differences, and cutoff times — and
+          explain possible alternatives. Ask about provider fees before
+          deciding whether to proceed.
         </p>
         <p>
-          We can help regardless of where the change comes from: a shifted
-          meeting, a family emergency, a weather concern, or simply a change of
-          heart about your dates.
+          If you contact a participating provider, ask whether it handles the
+          type of change you need and what fees or conditions apply.
         </p>
       </ProseSection>
 
@@ -94,7 +71,7 @@ crumbLabel="Flight Changes"
             Need to Change Your Flight Today?
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-base text-navy-600">
-            The sooner you call, the more options are typically available.
+            Ask the airline or ticket seller which change options and fees apply to your ticket.
           </p>
           <div className="mt-6 flex justify-center">
             <CallButton label="Call for Flight Changes" variant="primary" />
@@ -108,15 +85,13 @@ crumbLabel="Flight Changes"
 
       <FinalCallToAction
         heading="Plans Changed? Let's Fix That."
-        subheading="Call our team to review the change options for your ticket and get clarity on next steps."
+        subheading="Call to reach a participating provider to review the change options for your ticket and get clarity on next steps."
       />
       <SEOScripts
-        organization={jsonLdOrganization({ name: "FlySupport", url: SITE_URL, phone: "+18885550100" })}
         breadcrumb={jsonLdBreadcrumb({ items: [
-          { name: "Home", url: `${SITE_URL}/` },
+          { name: "Home", url: SITE_URL },
           { name: "Flight Changes", url: `${SITE_URL}/flight-changes` },
         ] })}
-        faqs={jsonLdFAQ({ faqs: FAQS })}
       />
     </>
   );

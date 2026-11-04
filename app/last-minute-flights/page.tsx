@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/page-metadata";
 import PageHero from "@/components/PageHero";
 import ProseSection from "@/components/ProseSection";
 import FAQSection from "@/components/FAQSection";
@@ -6,48 +6,28 @@ import RelatedServices from "@/components/RelatedServices";
 import FinalCallToAction from "@/components/FinalCallToAction";
 import CallButton from "@/components/CallButton";
 import { SERVICES } from "@/lib/services";
-import { SEO_KEYWORDS } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
 import SEOScripts from "@/components/SEOScripts";
-import { jsonLdOrganization, jsonLdBreadcrumb, jsonLdFAQ } from "@/lib/seo";
+import { jsonLdBreadcrumb } from "@/lib/seo";
 import type { Faq } from "@/lib/faq-type";
 
-export const metadata: Metadata = {
-  title: "Last-Minute Flight Booking Assistance Phone | Urgent Travel Help",
-  description:
-    "Need to fly on short notice? Call our last-minute flight booking assistance phone line to discuss available flights, fares, and conditions for your urgent travel plans — speak to a real person, no forms.",
-  alternates: { canonical: "/last-minute-flights" },
-  openGraph: {
-    title: "Last-Minute Flight Booking Assistance Phone | FlySupport",
-    description:
-      "Flying soon? Call our team to discuss available last-minute flight options, conditions, and any service fees.",
-    url: "/last-minute-flights",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Last-Minute Flight Booking Assistance Phone | FlySupport",
-    description:
-      "Last-minute flight booking help by phone — discuss available flights, fares, and conditions.",
-  },
-  keywords: SEO_KEYWORDS,
-};
+export const metadata = pageMetadata({ title: 'Last-Minute Flight Options', description: 'Learn what to check when arranging last-minute travel. A call may connect you with an independent provider; confirm current availability, fares, and fees directly.', path: '/last-minute-flights' });
 
 const FAQS: Faq[] = [
   {
     question: "Is it possible to book a flight for today or tomorrow?",
     answer:
-      "Often, yes. Same-day and next-day bookings are frequently possible, though availability and fares can change quickly. Calling early in the process gives you the widest view of what's available.",
+      "It may be possible, depending on current schedules, seat availability, and the seller's booking deadlines. Confirm the itinerary, total price, and terms before paying.",
   },
   {
     question: "Why are last-minute fares sometimes so expensive?",
     answer:
-      "Airlines price seats dynamically — as a flight fills up, remaining seats often cost more. That said, Occasional last-minute deals exist on less-full flights. We'll discuss the fares we find with you transparently before anything is confirmed.",
+      "Airfares and availability can change quickly. Confirm the current price and ticket conditions with the airline or provider before booking.",
   },
   {
     question: "How fast can a last-minute booking be confirmed?",
     answer:
-      "Once you've chosen an option and any payment details are settled over the phone with our team, confirmation is typically immediate. We'll walk you through the timeline on the call.",
+      "Confirmation timing depends on the provider and airline. Ask the provider when a booking becomes final and how payment is processed.",
   },
   {
     question: "What should I have ready to speed things up?",
@@ -63,7 +43,7 @@ export default function LastMinuteFlightsPage() {
 crumbLabel="Last-Minute Flights"
         eyebrow="Last-Minute Flights"
         title="Last-Minute Flight Booking Assistance"
-        description="Family emergency, urgent work trip, or a sudden change of plans? Call our team to discuss the flight options available for last-minute travel."
+        description="Family emergency, urgent work trip, or a sudden change of plans? Call to reach a participating provider to discuss the flight options available for last-minute travel."
       />
 
       <ProseSection heading="Booking a Flight on Short Notice">
@@ -73,17 +53,14 @@ crumbLabel="Last-Minute Flights"
           times matter more than ever when you have little room for error.
         </p>
         <p>
-          Our team helps you cut through the noise. Tell us where you need to
-          be and when, and we&rsquo;ll discuss the flights that could work —
-          including direct options that reduce connection risk, realistic
-          arrival times, and fare conditions attached to each choice. Any
-          service fees are explained before you confirm, so you always know
-          where you stand.
+          A call may connect you with a participating independent provider.
+          That provider may discuss possible routes, arrival times, fare
+          conditions, and its own fees. Confirm availability and terms before
+          booking.
         </p>
         <p>
-          If your travel is urgent because of an emergency, let us know. It
-          helps us prioritize options that get you there soonest, and it
-          matters for how we discuss conditions with you.
+          If you speak with a provider, explain your timing needs. The provider
+          determines what options and service it can offer.
         </p>
       </ProseSection>
 
@@ -93,7 +70,7 @@ crumbLabel="Last-Minute Flights"
             Need To Be Somewhere Soon?
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-base text-navy-600">
-            Every minute counts with last-minute travel. Call now.
+            Ask about current availability, total price, and booking conditions.
           </p>
           <div className="mt-6 flex justify-center">
             <CallButton label="Call for Last-Minute Booking Help" variant="primary" />
@@ -106,16 +83,14 @@ crumbLabel="Last-Minute Flights"
       <RelatedServices services={SERVICES} excludeHref="/last-minute-flights" />
 
       <FinalCallToAction
-        heading="Urgent Trip? Let's Find You a Flight."
-        subheading="Call our team to discuss available last-minute options before they're gone."
+        heading="Need to Travel Soon? Review Your Options."
+        subheading="A call may connect you with a participating provider. Confirm current availability, prices, terms, and fees directly before proceeding."
       />
       <SEOScripts
-        organization={jsonLdOrganization({ name: "FlySupport", url: SITE_URL, phone: "+18885550100" })}
         breadcrumb={jsonLdBreadcrumb({ items: [
-          { name: "Home", url: `${SITE_URL}/` },
+          { name: "Home", url: SITE_URL },
           { name: "Last-Minute Flights", url: `${SITE_URL}/last-minute-flights` },
         ] })}
-        faqs={jsonLdFAQ({ faqs: FAQS })}
       />
     </>
   );

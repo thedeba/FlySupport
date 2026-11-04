@@ -27,8 +27,8 @@ export default function HeroSection() {
           </h1>
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-navy-100 section-subtitle">
             Looking for a flight, need to change your travel plans, or dealing
-            with a cancellation? Call our team to discuss your available
-            options.
+            with a cancellation? AirNexa may connect you with an independent
+            provider to discuss assistance options.
           </p>
           <div className="mt-10 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-center">
             <CallButton
@@ -51,7 +51,7 @@ export default function HeroSection() {
             <span>
               {PHONE_CONFIGURED ? (
                 <>
-                  Customer support:<br />
+                  Configured call number:<br />
                   <span className="block font-bold text-orange-300">{PHONE_DISPLAY}</span>
                 </>
               ) : (

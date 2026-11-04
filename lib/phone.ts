@@ -1,24 +1,19 @@
 /**
- * Centralized phone configuration for FlySupport.
+ * Centralized phone configuration for AirNexa.
  *
  * Configure these via environment variables:
- *   NEXT_PUBLIC_SUPPORT_PHONE_DISPLAY  e.g. "+1 (888) 555-0100"
- *   NEXT_PUBLIC_SUPPORT_PHONE_TEL      e.g. "+18885550100"
+ *   NEXT_PUBLIC_SUPPORT_PHONE_DISPLAY  verified number shown to visitors
+ *   NEXT_PUBLIC_SUPPORT_PHONE_TEL      verified international tel: number
  *
- * A neutral placeholder is used only in development so the layout can be
- * reviewed without a verified number. Production never renders a fake number.
+ * Without both verified values, call actions remain disabled and the site
+ * shows a configuration message instead of a sample number.
  */
-
-const DEV_DISPLAY = "+1 (555) 000-0000";
-const DEV_TEL = "+15550000000";
-
-const isProduction = process.env.NODE_ENV === "production";
 
 const rawDisplay = process.env.NEXT_PUBLIC_SUPPORT_PHONE_DISPLAY;
 const rawTel = process.env.NEXT_PUBLIC_SUPPORT_PHONE_TEL;
 
-export const PHONE_DISPLAY = rawDisplay || (isProduction ? "" : DEV_DISPLAY);
-export const PHONE_TEL = rawTel || (isProduction ? "" : DEV_TEL);
+export const PHONE_DISPLAY = rawDisplay || "";
+export const PHONE_TEL = rawTel || "";
 
 /** True when a real, verified phone number is configured. */
 export const PHONE_CONFIGURED = Boolean(

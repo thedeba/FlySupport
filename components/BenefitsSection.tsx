@@ -11,19 +11,19 @@ const BENEFITS = [
     icon: Repeat,
     title: "Help understanding change options",
     description:
-      "Our team walks you through what may be possible with your ticket, based on airline rules and fare conditions.",
+      "A participating independent provider may discuss options, subject to airline rules and fare conditions.",
   },
   {
     icon: Wallet,
     title: "Clear service-fee explanations",
     description:
-      "Before you proceed, we explain any applicable service fees so you know exactly where you stand.",
+      "Ask the provider to explain any fees before you agree to a service or payment.",
   },
   {
     icon: Headset,
-    title: "Easy access to customer support",
+    title: "Access to independent providers",
     description:
-      "One phone number connects you with a real person who can talk through your travel situation.",
+      "A call link lets you contact the number configured by the site owner.",
   },
   {
     icon: ClipboardList,
@@ -42,7 +42,7 @@ export default function BenefitsSection() {
             id="benefits-heading"
             className="text-2xl font-extrabold tracking-tight text-navy-900 sm:text-3xl section-head"
           >
-            Why Choose Our Service?
+            Why Use AirNexa?
           </h2>
           <span
             className="mx-auto mt-3 block h-1 w-12 rounded-full bg-orange-500 sm:mx-0"
@@ -76,8 +76,8 @@ export default function BenefitsSection() {
           <li className="flex flex-col items-start justify-center gap-4 rounded-3xl bg-gradient-to-br from-navy-900 to-navy-800 p-8">
             <h3 className="text-lg font-bold text-white">Ready to talk through your options?</h3>
             <p className="text-sm leading-relaxed text-navy-100/90">
-              Our team is one phone call away. We&rsquo;ll listen first, then
-              walk you through what may be possible.
+              A call may connect you with an independent provider. Ask who is
+              answering and what services and fees apply.
             </p>
           </li>
         </ul>

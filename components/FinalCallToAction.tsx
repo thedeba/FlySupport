@@ -34,7 +34,7 @@ export default function FinalCallToAction({
             </div>
             <div className="text-left">
               <p className="text-xs font-semibold uppercase tracking-wider text-navy-300">
-                Customer support
+                Configured call number
               </p>
               <p className="text-base font-bold text-white">
                 {PHONE_CONFIGURED ? PHONE_DISPLAY : PRODUCTION_PLACEHOLDER}

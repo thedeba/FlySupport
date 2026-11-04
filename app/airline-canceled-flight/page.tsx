@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/page-metadata";
 import PageHero from "@/components/PageHero";
 import ProseSection from "@/components/ProseSection";
 import FAQSection from "@/components/FAQSection";
@@ -6,53 +6,33 @@ import RelatedServices from "@/components/RelatedServices";
 import FinalCallToAction from "@/components/FinalCallToAction";
 import CallButton from "@/components/CallButton";
 import { SERVICES } from "@/lib/services";
-import { SEO_KEYWORDS } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
 import SEOScripts from "@/components/SEOScripts";
-import { jsonLdOrganization, jsonLdBreadcrumb, jsonLdFAQ } from "@/lib/seo";
+import { jsonLdBreadcrumb } from "@/lib/seo";
 import type { Faq } from "@/lib/faq-type";
 
-export const metadata: Metadata = {
-  title: "Airline Canceled My Flight Help | Rebooking & Refund Phone",
-  description:
-    "Airline canceled your flight? Call our assistance phone line to understand your rebooking and refund choices, including U.S. DOT refund protections where they apply — speak to a real person, no forms.",
-  alternates: { canonical: "/airline-canceled-flight" },
-  openGraph: {
-    title: "Airline Canceled My Flight Help | FlySupport",
-    description:
-      "Airline canceled on you? Call our team to review your rebooking and refund options so you can decide with confidence.",
-    url: "/airline-canceled-flight",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Airline Canceled My Flight Help | FlySupport",
-    description:
-      "Airline canceled flight rebooking and refund help by phone — review your options.",
-  },
-  keywords: SEO_KEYWORDS,
-};
+export const metadata = pageMetadata({ title: 'When an Airline Cancels Your Flight', description: 'Understand general next steps after an airline cancellation and where to confirm rebooking or refund options for your ticket.', path: '/airline-canceled-flight' });
 
 const FAQS: Faq[] = [
   {
     question: "The airline canceled my flight. Am I entitled to a refund?",
     answer:
-      "In many cases, yes. For flights to, from, or within the United States, when an airline cancels a flight for which you have a confirmed reservation and you choose not to accept the alternative offered, you're generally entitled to a refund of the ticket price. The specifics depend on your circumstances and ticket.",
+      "The U.S. DOT says ticketed passengers are entitled to a prompt refund when an airline cancels a flight or makes a significant change and the passenger does not accept the alternative offered. Check the DOT guidance and ask the airline or ticket seller responsible for your booking about your situation.",
   },
   {
     question: "Should I take the airline's rebooking or ask for a refund?",
     answer:
-      "It depends on your plans. If you still need to travel, a rebooking on the next available flight may be the fastest path. If the cancellation destroyed the purpose of your trip, a refund may make more sense. We can help you weigh both options on a call.",
+      "The choice depends on your plans and the alternative offered. Ask the airline or ticket seller to explain rebooking and refund options before deciding. A participating provider may separately explain its own services and fees.",
   },
   {
     question: "Will the airline pay for a hotel or meals after a cancellation?",
     answer:
-      "U.S. airlines are not federally required to provide these, though some do for certain delay or cancellation causes — these commitments typically apply to cancellations or delays within the airline's control. Whether it applies to you depends on the airline and the reason for the cancellation.",
+      "Airline commitments vary. The U.S. DOT's cancellation and delay dashboard summarizes certain commitments by U.S. airlines, including when a disruption is within the airline's control. Check the dashboard and confirm details with your airline.",
   },
   {
     question: "How long do refund timelines take?",
     answer:
-      "U.S. regulations generally require airlines to process eligible refunds promptly — commonly within seven business days for credit card purchases. We can discuss the expected timeline for your situation during the call.",
+      "Eligible refund timing depends on applicable rules and payment method. Confirm the expected timeline with the airline or ticket provider responsible for your booking.",
   },
 ];
 
@@ -63,16 +43,19 @@ export default function AirlineCanceledFlightPage() {
 crumbLabel="Airline Canceled Flight"
         eyebrow="Airline Cancellations"
         title="Airline Canceled Your Flight? Know Your Options."
-        description="When the airline cancels on you, you have choices — a refund or a rebooking. Call our team to understand what applies to your reservation and decide your next steps with confidence."
+        description="An airline cancellation may affect your travel plans and available options. Confirm refund or rebooking details with the airline or ticket seller responsible for your reservation."
       />
 
       <ProseSection heading="When the Airline Cancels on You">
         <p>
-          An airline cancellation flips the situation: rather than you changing
-          plans, the carrier has failed to deliver the flight you paid for.
-          U.S. rules generally entitle you to choose how to move forward —
-          typically a refund of the unused ticket, or a rebooking onto another
-          flight if you still need to travel.
+          If an airline cancels a flight or makes a significant change, the
+          options depend on the alternative offered and the applicable rules.
+          The U.S. DOT explains when ticketed passengers may choose a refund if
+          they do not accept the alternative. Review the{" "}
+          <a className="underline underline-offset-2" href="https://www.transportation.gov/individuals/aviation-consumer-protection/refunds">
+            DOT refund guidance
+          </a>{" "}
+          and confirm your booking details with the airline or ticket seller.
         </p>
         <p>
           The right move depends on your circumstances. If you still need to
@@ -82,10 +65,9 @@ crumbLabel="Airline Canceled Flight"
           conversation is about securing a proper refund and its timeline.
         </p>
         <p>
-          Call our team with your booking reference in hand. We&rsquo;ll walk
-          you through what the cancellation likely entitles you to, what the
-          airline is expected to offer, and what to ask for — before you commit
-          to a course of action with the airline.
+          If you contact a provider, have your booking reference available.
+          The airline controls rebooking and refund decisions. A participating
+          provider may discuss assistance options and any fees.
         </p>
       </ProseSection>
 
@@ -95,8 +77,8 @@ crumbLabel="Airline Canceled Flight"
             Flight Canceled? Let's Talk About Your Next Steps.
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-base text-navy-600">
-            Don&rsquo;t settle for the first offer. Understand your full range
-            of options first.
+            Review the airline&rsquo;s offer and confirm the options that apply
+            to your ticket before deciding.
           </p>
           <div className="mt-6 flex justify-center">
             <CallButton label="Call for Rebooking & Refund Help" variant="primary" />
@@ -110,15 +92,13 @@ crumbLabel="Airline Canceled Flight"
 
       <FinalCallToAction
         heading="Canceled? Take Back Control."
-        subheading="Call our team to review your refund and rebooking choices after an airline cancellation."
+        subheading="Call to reach a participating provider to review your refund and rebooking choices after an airline cancellation."
       />
       <SEOScripts
-        organization={jsonLdOrganization({ name: "FlySupport", url: SITE_URL, phone: "+18885550100" })}
         breadcrumb={jsonLdBreadcrumb({ items: [
-          { name: "Home", url: `${SITE_URL}/` },
+          { name: "Home", url: SITE_URL },
           { name: "Airline Canceled Flight", url: `${SITE_URL}/airline-canceled-flight` },
         ] })}
-        faqs={jsonLdFAQ({ faqs: FAQS })}
       />
     </>
   );

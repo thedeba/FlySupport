@@ -5,9 +5,9 @@ const STEPS = [
   {
     icon: PhoneCall,
     step: "Step 1",
-    title: "Call Our Team",
+    title: "Call a Provider",
     description:
-      "Call the customer support number displayed on our website.",
+      "Use the displayed phone link to contact the configured number. A call may connect you with a participating independent provider.",
   },
   {
     icon: ClipboardList,
@@ -50,10 +50,10 @@ export default function HowItWorks() {
           </p>
         </div>
 
-        <ol className="mt-12 grid gap-8 sm:grid-cols-3 sm:gap-10">
+        <ol className="mt-12 grid items-stretch gap-8 sm:grid-cols-3 sm:gap-10">
           {STEPS.map((step, index) => (
-            <li key={step.title} className="relative">
-              <div className="relative flex flex-col items-center rounded-3xl border border-navy-100 bg-white p-8 text-center shadow-sm card-group">
+            <li key={step.title} className="relative flex">
+              <div className="relative flex h-full min-h-[20rem] w-full flex-col items-center rounded-3xl border border-navy-100 bg-white p-8 text-center shadow-sm card-group">
                 <div className="mb-5 inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-navy-900 text-white">
                   <step.icon className="h-7 w-7" aria-hidden="true" />
                 </div>
@@ -63,7 +63,7 @@ export default function HowItWorks() {
                 <h3 className="mt-2 text-lg font-bold text-navy-900">
                   {step.title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-navy-600">
+                <p className="mt-3 w-full flex-1 text-sm leading-relaxed text-navy-600">
                   {step.description}
                 </p>
                 {PHONE_CONFIGURED ? (
@@ -89,8 +89,8 @@ export default function HowItWorks() {
 
         <p className="mx-auto mt-12 max-w-2xl text-center text-sm text-navy-500">
           Outcomes depend on airline rules, ticket conditions, and seat
-          availability. Our team will clearly explain any applicable conditions
-          and service fees before you decide how to proceed.
+          availability. Ask the provider who answers to explain its terms and
+          any fees before you decide how to proceed.
         </p>
       </div>
     </section>

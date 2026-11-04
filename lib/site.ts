@@ -1,2 +1,4 @@
-export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://www.flysupport.example.com";
+const configuredSiteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://fly.airnexa.pro";
+
+export const SITE_URL = configuredSiteUrl.replace(/\/+$/, "");

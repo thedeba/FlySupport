@@ -13,9 +13,13 @@ const SERVICE_LINKS = [
 ];
 
 const COMPANY_LINKS = [
-  { href: "/contact", label: "Contact" },
+  { href: "/about", label: "About AirNexa" },
+  { href: "/contact", label: "Contact Us" },
+  { href: "/disclaimer", label: "Disclaimer" },
+  { href: "/affiliate-disclosure", label: "Affiliate Disclosure" },
+  { href: "/call-transfer-disclosure", label: "Call Transfer Disclosure" },
   { href: "/privacy-policy", label: "Privacy Policy" },
-  { href: "/terms-of-service", label: "Terms of Service" },
+  { href: "/terms-and-conditions", label: "Terms & Conditions" },
   { href: "/cancellation-refund-policy", label: "Cancellation & Refund Policy" },
   { href: "/accessibility", label: "Accessibility" },
 ];
@@ -28,9 +32,9 @@ export default function Footer() {
           <div>
             <Logo variant="light" />
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-navy-200">
-              FlySupport is an independent travel assistance service. We help
-              travelers understand their flight booking, change, and
-              cancellation options over the phone.
+              AirNexa is an independently operated travel affiliate and lead
+              generation website. We help travelers find participating
+              independent providers for travel assistance.
             </p>
           </div>
 
@@ -54,7 +58,7 @@ export default function Footer() {
 
           <nav aria-label="Company and legal">
             <h2 className="text-sm font-semibold uppercase tracking-wide text-white">
-              Company
+              Company &amp; Legal
             </h2>
             <ul className="mt-4 space-y-2.5">
               {COMPANY_LINKS.map((link) => (
@@ -72,34 +76,60 @@ export default function Footer() {
         </div>
 
         <div className="mt-10 border-t border-navy-800 pt-6">
-          <h2 className="text-sm font-semibold uppercase tracking-wide text-white">
-            Disclaimer
-          </h2>
+          <h2 className="text-sm font-semibold uppercase tracking-wide text-white">Disclaimer</h2>
           <p className="mt-3 max-w-3xl text-xs leading-relaxed text-navy-300">
-            FlySupport is an independent travel assistance service and is not
-            an airline. We are not affiliated with, endorsed by, or sponsored
-            by any airline, nor do we claim to hold any official airline
-            partnership. Airline rules, fare conditions, availability, and any
-            applicable fees determine the options discussed during your call;
-            no refund, rebooking, or price is guaranteed. For full details,
-            see our{" "}
-            <Link
-              href="/cancellation-refund-policy"
-              className="font-semibold text-navy-200 underline underline-offset-2 transition-colors hover:text-white"
-            >
-              Cancellation &amp; Refund Policy
-            </Link>{" "}
-            and{" "}
-            <Link
-              href="/terms-of-service"
-              className="font-semibold text-navy-200 underline underline-offset-2 transition-colors hover:text-white"
-            >
-              Terms of Service
+            AirNexa is an independent travel affiliate and lead-generation
+            website, not an airline, travel agency, airline representative, or
+            official customer-service department. We are not affiliated with,
+            endorsed by, or sponsored by Delta Air Lines, Inc. or any other
+            airline. Calls may be routed or transferred to independent
+            providers, who handle their own services, fees, and policies.
+            AirNexa may receive compensation for calls or referrals. Confirm
+            provider details and charges before proceeding. Read the{" "}
+            <Link href="/disclaimer" className="font-semibold text-navy-200 underline underline-offset-2 hover:text-white">
+              full Legal Disclaimer
             </Link>
             .
           </p>
+          <div className="mt-6 max-w-3xl">
+            <h2 className="text-sm font-semibold uppercase tracking-wide text-white">
+              Affiliate &amp; Compensation Disclosure
+            </h2>
+            <div className="mt-3 space-y-3 text-xs leading-relaxed text-navy-300">
+              <p>
+                AirNexa participates in affiliate marketing and lead-generation
+                programs. We may receive compensation when visitors call
+                telephone numbers listed on this website, contact participating
+                service providers, or are connected with third-party travel
+                assistance providers.
+              </p>
+              <p>
+                This compensation helps support the operation and maintenance
+                of our website.
+              </p>
+              <p>
+                Compensation arrangements may exist between AirNexa and
+                participating providers. However, the availability, quality,
+                pricing, and terms of services are determined independently by
+                each provider.
+              </p>
+              <p>
+                AirNexa does not control the services, fees, booking
+                conditions, or policies of third-party providers. Verify
+                relevant information directly with the provider before making
+                a booking or purchasing decision. Read the full{" "}
+                <Link
+                  href="/affiliate-disclosure"
+                  className="font-semibold text-navy-200 underline underline-offset-2 hover:text-white"
+                >
+                  Affiliate Disclosure
+                </Link>
+                .
+              </p>
+            </div>
+          </div>
           <p className="mt-3 text-xs text-navy-400 align-center">
-            &copy; {YEAR} FlySupport. All rights reserved.
+            &copy; {YEAR} AirNexa. All rights reserved.
           </p>
         </div>
       </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { usePathname } from "next/navigation";
 import { Menu, X, Phone } from "lucide-react";
 import Logo from "@/components/Logo";
@@ -26,7 +27,7 @@ export default function MobileNavigation() {
     <div className="md:hidden">
       <button
         type="button"
-        onClick={() => setOpen(!open)}
+        onClick={() => setOpen((current) => !current)}
         aria-expanded={open}
         aria-controls="mobile-menu"
         aria-label={open ? "Close navigation menu" : "Open navigation menu"}
@@ -35,11 +36,11 @@ export default function MobileNavigation() {
         {open ? <X className="h-6 w-6" aria-hidden="true" /> : <Menu className="h-6 w-6" aria-hidden="true" />}
       </button>
 
-      {open && (
+      {open && typeof document !== "undefined" && createPortal(
         <nav
           id="mobile-menu"
           aria-label="Mobile navigation"
-          className="fixed inset-x-0 top-0 z-50 flex h-full flex-col bg-white shadow-xl"
+          className="fixed inset-0 z-[60] flex h-[100dvh] flex-col overflow-hidden bg-white shadow-xl"
         >
           <div className="flex items-center justify-between border-b border-navy-100 px-4 py-3">
             <Logo />
@@ -59,7 +60,7 @@ export default function MobileNavigation() {
             <a
               href={PHONE_CONFIGURED ? `tel:${PHONE_TEL}` : undefined}
               aria-disabled={!PHONE_CONFIGURED}
-              aria-label={PHONE_CONFIGURED ? `Call Flight Support: ${PHONE_DISPLAY}` : undefined}
+              aria-label={PHONE_CONFIGURED ? `Call the configured number: ${PHONE_DISPLAY}` : undefined}
               className={`flex h-12 items-center justify-center gap-2 rounded-full bg-orange-500 px-4 text-base font-bold text-white shadow-sm transition-colors ${
                 PHONE_CONFIGURED ? "hover:bg-orange-600 active:bg-orange-700" : "pointer-events-none opacity-60 grayscale"
               }`}
@@ -68,7 +69,8 @@ export default function MobileNavigation() {
               {PHONE_CONFIGURED ? PHONE_DISPLAY : PRODUCTION_PLACEHOLDER}
             </a>
           </div>
-        </nav>
+        </nav>,
+        document.body,
       )}
     </div>
   );

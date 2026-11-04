@@ -18,7 +18,7 @@ export default function Header() {
           <a
             href={PHONE_CONFIGURED ? `tel:${PHONE_TEL}` : undefined}
             aria-disabled={!PHONE_CONFIGURED}
-            aria-label={PHONE_CONFIGURED ? `Call us at ${PHONE_DISPLAY}` : undefined}
+            aria-label={PHONE_CONFIGURED ? `Call the configured number: ${PHONE_DISPLAY}` : undefined}
             className={`hidden h-11 items-center gap-2 rounded-full px-4 text-sm font-bold text-navy-900 transition-colors hover:bg-navy-50 xl:flex ${
               PHONE_CONFIGURED ? "" : "pointer-events-none opacity-60 grayscale"
             }`}

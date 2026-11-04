@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/page-metadata";
 import PageHero from "@/components/PageHero";
 import ProseSection from "@/components/ProseSection";
 import FAQSection from "@/components/FAQSection";
@@ -6,53 +6,33 @@ import RelatedServices from "@/components/RelatedServices";
 import FinalCallToAction from "@/components/FinalCallToAction";
 import CallButton from "@/components/CallButton";
 import { SERVICES } from "@/lib/services";
-import { SEO_KEYWORDS } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
 import SEOScripts from "@/components/SEOScripts";
-import { jsonLdOrganization, jsonLdBreadcrumb, jsonLdFAQ } from "@/lib/seo";
+import { jsonLdBreadcrumb } from "@/lib/seo";
 import type { Faq } from "@/lib/faq-type";
 
-export const metadata: Metadata = {
-  title: "Flight Cancellation Help Phone | Refund & Next Steps",
-  description:
-    "Need flight cancellation help? Call our cancellation assistance phone line to understand cancellation rules, possible refunds, travel credits, and your next steps — speak to a real person, no forms.",
-  alternates: { canonical: "/flight-cancellation" },
-  openGraph: {
-    title: "Flight Cancellation Help Phone | FlySupport",
-    description:
-      "Understand cancellation rules, possible refunds, and next steps for your ticket. Call our team to discuss your options.",
-    url: "/flight-cancellation",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Flight Cancellation Help Phone | FlySupport",
-    description:
-      "Flight cancellation refund help by phone — understand rules and next steps for your ticket.",
-  },
-  keywords: SEO_KEYWORDS,
-};
+export const metadata = pageMetadata({ title: 'Flight Cancellation Information', description: 'Learn what can affect flight cancellation options, refunds, and credits. Airline rules and ticket terms apply; confirm details with your airline or ticket provider.', path: '/flight-cancellation' });
 
 const FAQS: Faq[] = [
   {
     question: "Can I get a refund if I cancel my flight?",
     answer:
-      "It depends on your fare type. Refundable fares can generally be canceled for a refund. Non-refundable fares usually result in a travel credit rather than cash back, and basic economy fares are often the most restrictive of all. Call us to review what applies to your ticket.",
+      "It depends on the fare rules and applicable law. Contact the airline or ticket provider responsible for your booking to confirm your options. A participating provider may discuss assistance options.",
   },
   {
     question: "What is the 24-hour cancellation rule?",
     answer:
-      "For flights to, from, or within the United States, airlines generally must allow you to cancel a booking within 24 hours of purchase for a full refund, as long as the booking was made at least seven days before departure. There are some exceptions, so it's worth confirming your specific situation.",
+      "For tickets bought directly from an airline at least seven days before departure, federal rules require the airline to offer either a 24-hour hold or a full refund when you cancel within 24 hours. The rule does not apply in the same way to tickets bought through travel agents or online travel agencies. Check with the seller and review the U.S. DOT refund guidance.",
   },
   {
     question: "What happens to my miles or travel credit if I cancel?",
     answer:
-      "If your ticket converts to a travel credit, airlines will often preserve associated benefits like seat selections or miles for eligible tickets. The details depend on the airline and fare, and we can help you understand the likely outcome during your call.",
+      "Whether a ticket has residual value or a credit, and whether other benefits remain, depends on the airline and ticket terms. Ask the airline or ticket seller what applies to your reservation before canceling.",
   },
   {
     question: "Is it better to cancel or simply not show up?",
     answer:
-      "Canceling is almost always better. A no-show can void the ticket's remaining value and sometimes affect connecting segments. If you can't make your flight, call before departure to discuss your options.",
+      "Do not assume a no-show has the same result as canceling. Ticket value and remaining itinerary segments may be affected by the fare terms. Contact the airline or ticket seller before departure and ask how each option affects your booking.",
   },
 ];
 
@@ -63,29 +43,30 @@ export default function FlightCancellationPage() {
 crumbLabel="Flight Cancellation"
         eyebrow="Flight Cancellation"
         title="Flight Cancellation Help"
-        description="Canceling a flight can be confusing — fare rules, refund eligibility, and airline policies all interact. Call our team to understand your cancellation rules, possible refunds, and next steps."
+        description="Canceling a flight can be confusing — fare rules, refund eligibility, and airline policies all interact. Call to reach a participating provider to understand your cancellation rules, possible refunds, and next steps."
       />
 
       <ProseSection heading="Understanding Your Cancellation Options">
         <p>
-          Not all tickets are created equal. Refundable fares offer the most
-          flexibility, non-refundable fares typically convert to travel
-          credits, and basic economy fares often carry the tightest
-          restrictions. On top of that, specific situations — like the U.S.
-          24-hour booking rule — give travelers additional rights in some
-          cases.
+          Refunds, credits, and cancellation terms depend on the ticket, seller,
+          and applicable rules. For some tickets bought directly from an
+          airline, federal rules require a 24-hour hold or refund option when
+          purchased at least seven days before departure. See the{" "}
+          <a className="underline underline-offset-2" href="https://www.transportation.gov/individuals/aviation-consumer-protection/refunds">
+            U.S. DOT refund guidance
+          </a>{" "}
+          and confirm the terms with the airline or ticket seller.
         </p>
         <p>
-          When you call our team, we&rsquo;ll review the fare conditions
-          attached to your booking and explain what canceling would mean in
-          practice: whether a refund, a credit, or something else is likely,
-          what deadlines apply, and any service fees involved. No jargon, no
-          surprises — just a clear explanation so you can decide what to do.
+          The airline or ticket provider controls the fare conditions attached
+          to your booking. A participating provider may discuss possible
+          outcomes and deadlines. Ask it to explain its own fees before you
+          decide whether to proceed.
         </p>
         <p>
-          If you&rsquo;re canceling because of an emergency, mention that on
-          the call. Some airlines have policies for documented emergencies, and
-          timing can affect what&rsquo;s possible.
+          If special circumstances affect your plans, ask the airline or ticket
+          seller whether its policies provide an exception. Do not assume an
+          exception or refund applies until the responsible company confirms it.
         </p>
       </ProseSection>
 
@@ -95,8 +76,8 @@ crumbLabel="Flight Cancellation"
             Thinking About Canceling?
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-base text-navy-600">
-            Talk to our team first so you know exactly what cancellation means
-            for your ticket.
+            Confirm directly with the airline or ticket provider what
+            cancellation means for your ticket.
           </p>
           <div className="mt-6 flex justify-center">
             <CallButton label="Call for Cancellation Help" variant="primary" />
@@ -110,15 +91,13 @@ crumbLabel="Flight Cancellation"
 
       <FinalCallToAction
         heading="Get Clear on Your Cancellation Options"
-        subheading="One call is all it takes to understand the refund, credit, and deadline rules that apply to your booking."
+        subheading="Confirm the rules for your ticket with the airline or ticket seller. A participating provider may also explain its own services and fees."
       />
       <SEOScripts
-        organization={jsonLdOrganization({ name: "FlySupport", url: SITE_URL, phone: "+18885550100" })}
         breadcrumb={jsonLdBreadcrumb({ items: [
-          { name: "Home", url: `${SITE_URL}/` },
+          { name: "Home", url: SITE_URL },
           { name: "Flight Cancellation", url: `${SITE_URL}/flight-cancellation` },
         ] })}
-        faqs={jsonLdFAQ({ faqs: FAQS })}
       />
     </>
   );

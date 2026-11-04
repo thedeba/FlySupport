@@ -1,1 +1,1 @@
-export const SITE_NAME = "FlySupport";
+export const SITE_NAME = "AirNexa";

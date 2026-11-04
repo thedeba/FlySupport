@@ -23,7 +23,7 @@ export default function FAQSection({ faqs }: { faqs: Faq[] }) {
         </div>
         <div className="mt-10 text-center">
           <CallButton
-            label="Still Have Questions? Call Our Team."
+            label="Still Have Questions? Call a Provider."
             variant="primary"
           />
         </div>

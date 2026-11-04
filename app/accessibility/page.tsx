@@ -1,14 +1,9 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/page-metadata";
 import PageHero from "@/components/PageHero";
 import ProseSection from "@/components/ProseSection";
 import FinalCallToAction from "@/components/FinalCallToAction";
 
-export const metadata: Metadata = {
-  title: "Accessibility",
-  description:
-    "FlySupport is committed to an accessible website and phone-first service. Learn about our accessibility features and how to report an issue.",
-  alternates: { canonical: "/accessibility" },
-};
+export const metadata = pageMetadata({ title: 'Accessibility', description: "Read about AirNexa's website accessibility features and how to report an accessibility issue.", path: '/accessibility' });
 
 export default function AccessibilityPage() {
   return (
@@ -17,7 +12,7 @@ export default function AccessibilityPage() {
 crumbLabel="Accessibility"
         eyebrow="Accessibility"
         title="Our Commitment to Accessibility"
-        description="We want every traveler — including travelers with disabilities — to be able to use this website and reach our team by phone."
+        description="We want every traveler — including travelers with disabilities — to be able to use this website and access the available contact options."
       />
 
       <ProseSection heading="Accessibility Features of This Website">
@@ -34,10 +29,10 @@ crumbLabel="Accessibility"
           Phone-Based Assistance
         </h2>
         <p>
-          Our service is intentionally phone-first. If you find any part of
-          this website difficult to use, you never lose access to our help —
-          call our customer support line and a team member will assist you
-          directly. If you use a teletypewriter (TTY) or need to connect via a
+          AirNexa is an informational referral website. If you find any part
+          of this website difficult to use, contact the site owner using the
+          method on our Contact page. Calls to the displayed number may connect
+          to an independent provider. If you use a teletypewriter (TTY) or need to connect via a
           relay service, dial 711 in the United States to reach a
           telecommunications relay operator who can place the call for you.
         </p>
@@ -56,14 +51,15 @@ crumbLabel="Accessibility"
         </h2>
         <p>
           If you encounter anything on this website that is hard to use,
-          please call us and describe the issue. We take accessibility reports
-          seriously and will work to fix problems promptly.
+          please use the contact method listed on the Contact page and describe
+          the issue. The owner should provide a verified contact method before
+          launch.
         </p>
       </ProseSection>
 
       <FinalCallToAction
         heading="Need Assistance? Just Call."
-        subheading="Our phone-based support is available to every traveler. Call us and we'll help you directly."
+        subheading="Calls may connect you with participating independent providers. The provider's services and availability vary."
       />
     </>
   );

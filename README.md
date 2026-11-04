@@ -1,4 +1,4 @@
-# FlySupport
+# AirNexa
 
 A premium, mobile-first flight assistance website for U.S. travelers, built around a
 single conversion goal: getting visitors to call the support line. **No forms anywhere.**
@@ -25,26 +25,19 @@ All call buttons across the site share one configuration source. Set these
 environment variables (see `.env.example`):
 
 ```bash
-NEXT_PUBLIC_SUPPORT_PHONE_DISPLAY="+1 (888) 555-0100"   # formatted number shown to visitors
-NEXT_PUBLIC_SUPPORT_PHONE_TEL="+18885550100"            # international format for tel: links
+NEXT_PUBLIC_SUPPORT_PHONE_DISPLAY=""   # set to a verified number shown to visitors
+NEXT_PUBLIC_SUPPORT_PHONE_TEL=""      # set to the same verified number in tel: format
 ```
 
 - Defined once in `lib/phone.ts` — never hardcode the number in components.
-- `NEXT_PUBLIC_SITE_URL` (optional): canonical/OG base URL, e.g. `https://www.yourdomain.com`.
-- **If the number is missing:** development shows a neutral placeholder so the layout
-  can be reviewed; production renders no phone number and disables call actions
-  (no fake numbers are ever shown).
+- `NEXT_PUBLIC_SITE_URL` (optional): canonical/OG base URL; defaults to `https://fly.airnexa.pro`.
+- **If the number is missing:** the site shows a configuration message and disables
+  call actions. No sample phone number is displayed.
 
 ### Placeholders to replace before launch
 
 - `lib/site.ts` — set the real domain (or `NEXT_PUBLIC_SITE_URL`)
-- `lib/business.ts` — support hours and verified business details
-- All `[phone:email:address]` placeholders (contact page, legal pages)
-
-## Replacing the Development Phone Number
-
-The `.env.local` file contains a placeholder number for local preview.
-Replace it with the **real, authorized business number** before launch:
+- Contact page — configure a verified privacy/business contact method before launch.
 
 ## Project Structure
 
@@ -57,8 +50,9 @@ app/                        # App Router pages (all statically prerendered)
   missed-flight/
   last-minute-flights/
   airline-canceled-flight/
-  contact/                  # Phone-only contact page (no form)
-  privacy-policy/  terms-of-service/  cancellation-refund-policy/  accessibility/
+  contact/  about/          # Public information pages
+  disclaimer/  affiliate-disclosure/  call-transfer-disclosure/
+  privacy-policy/  terms-and-conditions/  cancellation-refund-policy/  accessibility/
   sitemap.ts  robots.ts     # SEO infrastructure
 components/                 # Reusable components (Header, CallButton, StickyMobileCallBar…)
 lib/                        # phone config, FAQs, services, business details, site URL
@@ -70,7 +64,7 @@ public/images/              # logo and static assets
 1. Replace the placeholder support number with a verified business number.
 2. Have the legal pages (privacy, terms, refund policy) reviewed against the
    actual business operations and applicable law — they ship as honest templates.
-3. Structured data was intentionally omitted until business details are verified.
+3. Do not add a phone number to public structured data until the configured number and its business relationship are verified.
 4. All claims on the site are supportable: no invented reviews, ratings,
    airline partnerships, or guarantees.
 

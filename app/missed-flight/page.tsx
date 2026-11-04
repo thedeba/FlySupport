@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/page-metadata";
 import PageHero from "@/components/PageHero";
 import ProseSection from "@/components/ProseSection";
 import FAQSection from "@/components/FAQSection";
@@ -6,53 +6,33 @@ import RelatedServices from "@/components/RelatedServices";
 import FinalCallToAction from "@/components/FinalCallToAction";
 import CallButton from "@/components/CallButton";
 import { SERVICES } from "@/lib/services";
-import { SEO_KEYWORDS } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
 import SEOScripts from "@/components/SEOScripts";
-import { jsonLdOrganization, jsonLdBreadcrumb, jsonLdFAQ } from "@/lib/seo";
+import { jsonLdBreadcrumb } from "@/lib/seo";
 import type { Faq } from "@/lib/faq-type";
 
-export const metadata: Metadata = {
-  title: "Missed Flight Assistance Phone | Rebooking Help",
-  description:
-    "Missed your flight? Call our missed flight assistance phone line as soon as possible to discuss rebooking options and next steps for your ticket — speak to a real person, no forms.",
-  alternates: { canonical: "/missed-flight" },
-  openGraph: {
-    title: "Missed Flight Assistance Phone | FlySupport",
-    description:
-      "Missed your flight? Call our team right away to discuss the rebooking options that may still be available.",
-    url: "/missed-flight",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Missed Flight Assistance Phone | FlySupport",
-    description:
-      "Missed flight rebooking help by phone — discuss next steps for your ticket right away.",
-  },
-  keywords: SEO_KEYWORDS,
-};
+export const metadata = pageMetadata({ title: 'Missed Flight Next Steps', description: 'General information about what to do after a missed flight, including contacting the airline or ticket provider promptly to discuss your booking.', path: '/missed-flight' });
 
 const FAQS: Faq[] = [
   {
     question: "I missed my flight. What should I do first?",
     answer:
-      "Call as soon as you realize. Some airlines offer a same-day rebooking policy (sometimes called a \"flat tire\" rule) for passengers who arrive within a short window after departure, but these policies often require quick action. The sooner you call, the better your chances.",
+      "Contact the airline or ticket seller promptly and ask what options apply to your ticket. Same-day rebooking policies and deadlines vary; do not assume a particular policy is available.",
   },
   {
     question: "Will I lose the value of my ticket if I miss my flight?",
     answer:
-      "It depends. Many non-refundable tickets lose their value after a no-show, though some airlines let you apply residual value with a fee if you contact them in time. This is exactly why calling immediately matters.",
+      "It depends on the ticket rules and airline policy. Ask the airline or ticket seller whether any value remains and whether other segments of your itinerary are affected.",
   },
   {
     question: "I missed a connecting flight because my first flight was late. What are my options?",
     answer:
-      "When a delay within the same reservation causes a missed connection, airlines typically rebook you on the next available flight at no extra cost. Call our team and we'll help you understand what to expect and next steps.",
+      "Options depend on the itinerary, airline, and cause of the delay. Contact the operating airline or ticket seller promptly to confirm what assistance or rebooking is available.",
   },
   {
     question: "Can the no-show rule affect my return flight?",
     answer:
-      "Yes — on some tickets, missing the outbound segment without notice can cause the airline to cancel the return leg. If you miss a flight, call before the remaining segments depart to protect the rest of your itinerary.",
+      "Some ticket rules may affect later segments after a missed flight. Contact the airline or ticket seller promptly and ask whether the rest of your itinerary remains active.",
   },
 ];
 
@@ -63,41 +43,38 @@ export default function MissedFlightPage() {
 crumbLabel="Missed Flight Assistance"
         eyebrow="Missed Flights"
         title="Missed Your Flight? Let's Talk Next Steps."
-        description="It happens to even the most careful travelers — traffic, long security lines, a late connection. Call our team as soon as possible to discuss what options are still open for your ticket."
+        description="It happens to even the most careful travelers — traffic, long security lines, a late connection. Call to reach a participating provider as soon as possible to discuss what options are still open for your ticket."
       />
 
       <ProseSection heading="What To Do If You Miss Your Flight">
         <p>
-          The single most important factor after a missed flight is time.
-          Airlines handle no-shows differently: some offer same-day rebooking
-          for a fee or free of charge, some apply the ticket&rsquo;s residual
-          value toward a new flight, and others consider the ticket forfeited.
-          There is often a real difference between calling thirty minutes after
-          departure versus the next day.
+          Airline and ticket-seller policies differ after a missed flight.
+          Contact the company responsible for your booking promptly to ask
+          whether rebooking, remaining ticket value, or later itinerary
+          segments are affected.
         </p>
         <p>
-          When you call our team, have your booking reference ready and tell us
-          the situation plainly — where you were supposed to be and when. We
-          will walk you through the policies that likely apply to your fare,
-          what rebooking may be possible, and any fees before you commit to
-          anything.
+          If you choose to contact a provider, have your booking reference
+          available and explain where you were supposed to be and when. The
+          provider may discuss applicable policies, possible rebooking, and
+          its fees. Confirm all details before proceeding.
         </p>
         <p>
           If you missed a connecting flight on a single reservation because the
-          first leg was late, say so — missed connections caused by airline
-          delays are usually handled quite differently from missed departures
-          caused by the traveler.
+          first leg was late, tell the airline or ticket seller. The available
+          assistance depends on the itinerary and the circumstances.
         </p>
       </ProseSection>
 
       <section aria-labelledby="missed-cta" className="bg-navy-50/60 py-14">
         <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
           <h2 id="missed-cta" className="text-xl font-extrabold text-navy-900 sm:text-2xl">
-            Deal With It Now, Not Tomorrow
+            Confirm Your Next Steps
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-base text-navy-600">
-            Missed flight options are often time-limited. Call our team right
-            away.
+            Options depend on your itinerary and ticket terms. Contact the airline
+            or ticket seller promptly; a participating provider may also explain
+            its own services and fees.
           </p>
           <div className="mt-6 flex justify-center">
             <CallButton label="Call for Travel Assistance" variant="primary" />
@@ -111,15 +88,13 @@ crumbLabel="Missed Flight Assistance"
 
       <FinalCallToAction
         heading="Missed Flight? There May Still Be Time."
-        subheading="Call our team now to discuss rebooking options and protect the value left in your ticket."
+        subheading="A call may connect you with a participating provider to discuss possible next steps. Contact the airline or ticket provider promptly about your booking."
       />
       <SEOScripts
-        organization={jsonLdOrganization({ name: "FlySupport", url: SITE_URL, phone: "+18885550100" })}
         breadcrumb={jsonLdBreadcrumb({ items: [
-          { name: "Home", url: `${SITE_URL}/` },
+          { name: "Home", url: SITE_URL },
           { name: "Missed Flight", url: `${SITE_URL}/missed-flight` },
         ] })}
-        faqs={jsonLdFAQ({ faqs: FAQS })}
       />
     </>
   );
